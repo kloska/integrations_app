@@ -86,5 +86,7 @@ if r.status_code == 200:
  else:
   print('Slack error while send message: ', slack_status['error'])
 
-else:
- print('PTV GET request not successful.')
+elif r.status_code == 403:
+ print(r.json()['message'])
+elif r.status_code == 404: 
+ print('PTV API error: 404 - File or directory not found.')
